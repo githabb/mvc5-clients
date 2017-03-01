@@ -47,6 +47,12 @@ namespace Clients.Web.Controllers
                         FirstName = c.FirstName,
                         Patronymic = c.Patronymic,
                         DateOfBirth = c.DateOfBirth,
+                        Contracts = c.Contracts.Select(a => new ContractModel()
+                        {
+                            ClientId = a.ClientId,
+                            Date = a.Date,
+                            ContractNumber = a.ContractNumber
+                        }).OrderByDescending(b => b.Date).ToList(),
                         Activities = c.Activities.Select(a => new ActivityModel()
                         {
                             ClientId = a.ClientId,

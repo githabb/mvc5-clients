@@ -23,11 +23,13 @@ namespace Clients.Web.Models
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DateOfBirth { get; set; }
 
+        public IList<ContractModel> Contracts { get; set; }
         public IList<ActivityModel> Activities { get; set; }
 
         public ClientModel()
         {
             Activities = new List<ActivityModel>();
+            Contracts = new List<ContractModel>();
         }
     }
 }
