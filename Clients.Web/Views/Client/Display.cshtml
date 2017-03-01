@@ -1,0 +1,76 @@
+﻿@model Clients.Web.Models.ClientModel
+
+@{
+    ViewBag.Title = "Display";
+}
+
+<div id="client">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Patronymic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patronymic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+
+    </dl>
+</div>
+<div id="tabs">Второй блок
+</div>
+<div id="actions">
+    @if (Model.Activities.Count > 0)
+    {
+        var meta = Model.Activities.First();
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => meta.CommentDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => meta.CommentText)
+                </th>
+            </tr>
+
+            @foreach (var activity in Model.Activities)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => activity.CommentDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => activity.CommentText)
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        @:Отсутствуют действия. @Html.ActionLink("Создайте новое действие", "Create").
+}
+</div>

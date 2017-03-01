@@ -1,0 +1,10 @@
+D:\job\Clients\Clients.Data\bin\Debug\Clients.Data.dll.config
+D:\job\Clients\Clients.Data\bin\Debug\Clients.Data.dll
+D:\job\Clients\Clients.Data\bin\Debug\Clients.Data.pdb
+D:\job\Clients\Clients.Data\bin\Debug\EntityFramework.dll
+D:\job\Clients\Clients.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\job\Clients\Clients.Data\bin\Debug\EntityFramework.xml
+D:\job\Clients\Clients.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\job\Clients\Clients.Data\obj\Debug\Clients.Data.csprojResolveAssemblyReference.cache
+D:\job\Clients\Clients.Data\obj\Debug\Clients.Data.dll
+D:\job\Clients\Clients.Data\obj\Debug\Clients.Data.pdb

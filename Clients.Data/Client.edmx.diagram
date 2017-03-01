@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5704977358074861bbcc6fb7de8dda1c" Name="Diagram1">
+        <EntityTypeShape EntityType="ClientsModel.Activity" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClientsModel.Address" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClientsModel.AddressType" Width="1.5" PointX="3.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClientsModel.Client" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClientsModel.Contract" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClientsModel.Phone" Width="1.5" PointX="6" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClientsModel.PhoneType" Width="1.5" PointX="3.75" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="ClientsModel.FK_Activity_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="ClientsModel.FK_Address_AddressType" ManuallyRouted="false" />
+        <AssociationConnector Association="ClientsModel.FK_Address_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="ClientsModel.FK_Contract_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="ClientsModel.FK_Phone_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="ClientsModel.FK_Phone_PhoneType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
