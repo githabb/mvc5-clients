@@ -3,78 +3,107 @@
 @{
     ViewBag.Title = "Display";
 }
-
-<div id="client">
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Surname)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Surname)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Patronymic)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Patronymic)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateOfBirth)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateOfBirth)
-        </dd>
-
-    </dl>
+<div id="modDialog" class="modal fade">
+    <div id="dialogContent" class="modal-dialog"></div>
 </div>
-<div id="tabs">Второй блок
-</div>
-<div id="actions">
-    @if (Model.Activities.Count > 0)
-    {
-        var meta = Model.Activities.First();
-        <table class="table table-striped">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => meta.CommentDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => meta.CommentText)
-                </th>
-            </tr>
+<div>
+        <dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.Surname)
+            </dt>
 
-            @foreach (var activity in Model.Activities)
-            {
+            <dd>
+                @Html.DisplayFor(model => model.Surname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Patronymic)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Patronymic)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateOfBirth)
+            </dd>
+
+        </dl>
+    </div>
+    <div id="tabs">
+        Второй блок
+    </div>
+    <div id="actions">
+        @if (Model.Activities.Count > 0)
+        {
+            var meta = Model.Activities.First();
+            <table class="table table-striped">
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => activity.CommentDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => activity.CommentText)
-                    </td>
+                    <th>
+                        @Html.DisplayNameFor(model => meta.CommentDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => meta.CommentText)
+                    </th>
                 </tr>
-            }
-        </table>
+
+                @foreach (var activity in Model.Activities)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => activity.CommentDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => activity.CommentText)
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+
+           
+
+        }
+        else
+        {
+            @:Отсутствуют действия. @Html.ActionLink("Создайте новое действие", "AddPhone").
+        }
         
-        <p>@Html.ActionLink("Добавить (телефон)", "CreatePhone")</p>
+        <div>
+            <p>
+                @Html.ActionLink("Добавить телефон", "AddPhone", new {clientId = Model.Id}, new {@class = "compItem"})
+            </p>
+        </div>
+    </div>
 
 
+    @section scripts
+{
+        <script type="text/javascript">
+
+            $(function () {
+                $.ajaxSetup({ cache: false });
+                $(".compItem").click(function (e) {
+
+                    e.preventDefault();
+                    $.get(this.href, function (data) {
+                        $('#dialogContent').html(data);
+                        $('#modDialog').modal('show');
+                    });
+                });
+            })
+        </script>
     }
-    else
-    {
-        @:Отсутствуют действия. @Html.ActionLink("Создайте новое действие", "Create").
-}
-</div>

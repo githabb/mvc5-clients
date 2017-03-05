@@ -31,7 +31,7 @@ namespace Clients.Web.Controllers
 
         public ActionResult Display(int? id)
         {
-            if(id == null)
+            if (id == null)
                 return HttpNotFound();
 
             using (Entities db = new Entities())
@@ -66,6 +66,15 @@ namespace Clients.Web.Controllers
 
                 return HttpNotFound();
             }
+        }
+        public ActionResult AddPhone(int? clientId)
+        {
+            if (clientId == null)
+                return HttpNotFound();
+
+            ViewBag.ClientId = clientId;
+            return PartialView();
+            
         }
     }
 }
