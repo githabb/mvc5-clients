@@ -67,14 +67,65 @@ namespace Clients.Web.Controllers
                 return HttpNotFound();
             }
         }
+
+        [HttpGet]
         public ActionResult AddPhone(int? clientId)
         {
             if (clientId == null)
                 return HttpNotFound();
 
+            LoadDropDowns();
+
             ViewBag.ClientId = clientId;
             return PartialView();
             
+        }
+
+        [HttpPost]
+        public ActionResult AddPhone(PhoneModel phone)
+        {
+            if (!ModelState.IsValid)
+                return AddPhone(phone.ClientId);
+
+            Phone dbPhone = new Phone()
+            {
+                ClientId = phone.ClientId,
+                PhoneNumber = phone.PhoneNumber,
+                PhoneTypeId = phone.PhoneTypeId
+            };
+            using (Entities db = new Entities())
+            {
+                db.Phones.Add(dbPhone);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Display", new { id = phone.ClientId });
+        }
+
+
+        private IList<NameItem> GetTypeList()
+        {
+            IList<PhoneType> phoneTypes;
+            using (Entities db = new Entities())
+            {
+                phoneTypes = db.PhoneTypes.OrderBy(e => e.ShortName).ToList();
+            }
+
+            IList<NameItem> list = new List<NameItem>();
+            list.Insert(0, new NameItem() { Id = null, Name = string.Empty });
+            foreach (var m in phoneTypes)
+            {
+                list.Add(new NameItem() { Id = m.Id, Name = m.ShortName });
+            }
+            return list;
+        }
+
+        private void LoadDropDowns()
+        {
+           
+            var type = GetTypeList();
+
+            
+            ViewBag.TypeList = new SelectList(type, "Id", "Name");
         }
     }
 }

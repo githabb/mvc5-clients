@@ -10,11 +10,14 @@ namespace Clients.Web.Models
     {
         public int Id { get; set; }
 
+        [Required]
         public int ClientId { get; set; }
 
+        [Required]
         [Display(Name = "Номер телефона")]
         public string PhoneNumber { get; set; }
 
+        [Required]
         [Display(Name = "Тип телефона")]
         public int PhoneTypeId { get; set; }
 
