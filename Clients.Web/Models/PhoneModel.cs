@@ -14,6 +14,7 @@ namespace Clients.Web.Models
         public int ClientId { get; set; }
 
         [Required]
+        [Phone]
         [Display(Name = "Номер телефона")]
         public string PhoneNumber { get; set; }
 

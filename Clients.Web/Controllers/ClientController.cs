@@ -8,6 +8,7 @@ using Clients.Web.Models;
 
 namespace Clients.Web.Controllers
 {
+    [Authorize]
     public class ClientController : Controller
     {
         public ActionResult Index()
