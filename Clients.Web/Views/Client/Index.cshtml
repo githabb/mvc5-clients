@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Список клиентов";
 }
-        <h2>View</h2>
+        <h2>Список клиентов</h2>
 <table class="table table-striped">  
     <tr>      
         <th>
@@ -36,7 +36,7 @@
                     @Html.DisplayFor(modelItem => item.DateOfBirth)
                 </td>
                 <td>
-                    @Html.ActionLink("Display", "Display", new { id = item.Id })
+                    @Html.ActionLink("Просмотр", "Display", new { id = item.Id })
                 </td>
             </tr>         
         }
