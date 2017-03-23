@@ -1,14 +1,10 @@
 ﻿@model Clients.Web.Models.ClientModel
 
 @{
+    Layout = "~/Views/Shared/Tabls.cshtml";
     ViewBag.Title = "Просмотр клиента";
 }
-
-<div id="clientPage">
-    <div id="modDialog" class="modal fade">
-        <div id="dialogContent" class="modal-dialog"></div>
-    </div>
-
+<div id="clientPage">    
     <div id="client">
         <dl class="dl-horizontal">
             <dt>
@@ -42,16 +38,55 @@
             <dd>
                 @Html.DisplayFor(model => model.DateOfBirth)
             </dd>
-
         </dl>
     </div>
+    <div id="modDialog" class="modal fade">
+        <div id="dialogContent" class="modal-dialog"></div>
+    </div>
     <div id="tabs">
-        Второй блок
         <div>
             <p>
                 @Html.ActionLink("Добавить телефон", "AddPhone", new { clientId = Model.Id }, new { @class = "compItem" })
             </p>
         </div>
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>
+                        Номер телефона
+                    </th>
+                    <th>
+                        Тип телефона
+                    </th>
+                </tr>
+
+                <tr>
+                    <td>
+                        0995678765
+                    </td>
+                    <td>
+                       моб.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        0509878765
+                    </td>
+                    <td>
+                        Раб.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        0665434567
+                    </td>
+                    <td>
+                        Дом.
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
     </div>
     <div id="actions">
         @if (Model.Activities.Count > 0)
@@ -80,17 +115,11 @@
                 }
 
             </table>
-
-
-
-
         }
         else
         {
             @:Отсутствуют действия. @Html.ActionLink("Создайте новое действие", "AddPhone").
             }
-
-
     </div>
 </div>
 
